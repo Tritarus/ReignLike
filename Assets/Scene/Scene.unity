@@ -1508,6 +1508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_leftButton: {fileID: 1297831712}
   m_rightButton: {fileID: 549341411}
+  m_storyPanel: {fileID: 585150146}
+  m_namePanel: {fileID: 684995761}
   m_imagePack:
   - {fileID: 114292695201896360, guid: 20d43c196420ae84080bf92e104e4884, type: 2}
   - {fileID: 114260548999698414, guid: 95038e1ef1458a142937e92f5534c3c6, type: 2}
@@ -1515,6 +1517,20 @@ MonoBehaviour:
   - {fileID: 114669343777648642, guid: 359f6d854bebbf347ad73d7b57066070, type: 2}
   - {fileID: 114373685241206018, guid: 7bad53d1f300fb345af35eee0517d07b, type: 2}
   - {fileID: 114639527148430566, guid: bd9be232304cf8f45ba3815cd4138a14, type: 2}
+  m_story:
+  - Salut, ca va ?
+  - "T'es S\xFBr ?"
+  - "Dommage, j'aurais pr\xE9f\xE9r\xE9 le contraire ?"
+  - "Nan Je t'\xE9coutes pas en fait. Tu sais ca ?"
+  - Hein ?
+  - What ?
+  m_name:
+  - Mr Dupont
+  - John Bob
+  - Remond
+  - Bob John
+  - EL Matador
+  - Mr Toulmonde
   m_avatar: {fileID: 1385575695}
 --- !u!114 &1640634393
 MonoBehaviour:
@@ -1724,6 +1740,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114530767075857850, guid: 1748ec4a4593f8b4982e2ecf2c84042a,
+        type: 2}
+      propertyPath: m_FillAmount
+      value: 0.637
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1748ec4a4593f8b4982e2ecf2c84042a, type: 2}

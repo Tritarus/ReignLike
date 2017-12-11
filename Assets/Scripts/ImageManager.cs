@@ -9,9 +9,14 @@ public class ImageManager : MonoBehaviour
 
     public Transform m_leftButton;
     public Transform m_rightButton;
-    public Image[] m_imagePack;
-    public Image m_avatar;
+    public Text m_storyPanel;
+    public Text m_namePanel;
 
+    public Image[] m_imagePack;
+    public string[] m_story;
+    public string[] m_name;
+    public Image m_avatar;
+    
     #endregion
 
     #region Public void
@@ -47,6 +52,8 @@ public class ImageManager : MonoBehaviour
                 m_selected = m_random.Next(0, 5);
                 m_imageTansform.position = m_position;
                 m_avatar.sprite = m_imagePack[m_selected].sprite;
+                m_storyPanel.text = m_story[m_selected];
+                m_namePanel.text = m_name[m_selected];
 
             }
         }
@@ -56,6 +63,11 @@ public class ImageManager : MonoBehaviour
             if (m_imageTansform.position.x > 10)
             {
                 goRight = false;
+                m_selected = m_random.Next(0, 5);
+                m_imageTansform.position = m_position;
+                m_avatar.sprite = m_imagePack[m_selected].sprite;
+                m_storyPanel.text = m_story[m_selected];
+                m_namePanel.text = m_name[m_selected];
             }
         }
     }
