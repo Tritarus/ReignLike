@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class ImageManager : MonoBehaviour
 {
@@ -39,37 +40,54 @@ public class ImageManager : MonoBehaviour
         m_selected = 0;
         m_imageTansform = m_avatar.GetComponent<Transform>();
         m_position = m_imageTansform.position;
+        Myclass myObject = JsonUtility.FromJson<Myclass>(dataJson);
+
+        Debug.Log(myObject.Name);
     }
 	
 	void Update()
     {
         if (goLeft)
         {
-            m_imageTansform.position = m_imageTansform.position + Vector3.left * .5f ;
-            if(m_imageTansform.position.x < -10)
-            {
-                goLeft = false;
-                m_selected = m_random.Next(0, 5);
-                m_imageTansform.position = m_position;
-                m_avatar.sprite = m_imagePack[m_selected].sprite;
-                m_storyPanel.text = m_story[m_selected];
-                m_namePanel.text = m_name[m_selected];
-
-            }
+            MoveLeft();
         }
         if (goRight)
         {
-            m_imageTansform.position = m_imageTansform.position + Vector3.right * .5f;
-            if (m_imageTansform.position.x > 10)
-            {
-                goRight = false;
-                m_selected = m_random.Next(0, 5);
-                m_imageTansform.position = m_position;
-                m_avatar.sprite = m_imagePack[m_selected].sprite;
-                m_storyPanel.text = m_story[m_selected];
-                m_namePanel.text = m_name[m_selected];
-            }
+            MoveRight();
         }
+    }
+
+    void MoveLeft()
+    {
+        m_imageTansform.position = m_imageTansform.position + Vector3.left * .5f;
+        if (m_imageTansform.position.x < -10)
+        {
+            goLeft = false;
+            m_selected = m_random.Next(0, 5);
+            m_imageTansform.position = m_position;
+            m_avatar.sprite = m_imagePack[m_selected].sprite;
+            m_storyPanel.text = m_story[m_selected];
+            m_namePanel.text = m_name[m_selected];
+        }
+    }
+
+    void MoveRight()
+    {
+        m_imageTansform.position = m_imageTansform.position + Vector3.right * .5f;
+        if (m_imageTansform.position.x > 10)
+        {
+            goRight = false;
+            m_selected = m_random.Next(0, 5);
+            m_imageTansform.position = m_position;
+            m_avatar.sprite = m_imagePack[m_selected].sprite;
+            SetMessage(m_story[m_selected]);
+            m_namePanel.text = m_name[m_selected];
+        }
+    }
+
+    void SetMessage(string _text)
+    {
+        m_storyPanel.text = _text;
     }
 
     #endregion
@@ -87,5 +105,22 @@ public class ImageManager : MonoBehaviour
     private Vector3 m_position = new Vector3();
     private System.Random m_random = new System.Random();
 
+
+    string dataJson = File.ReadAllText("C:/Users/student102/Documents/Reign like/Assets/data.json");
+    //Myclass myObject = new Myclass();
+
+
+
+
     #endregion
 }
+
+public class Myclass
+{
+    public string Name = "";
+    string Species = "";
+    int Number = 0;
+    string[] Eater;
+}
+
+
