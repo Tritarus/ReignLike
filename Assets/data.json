@@ -1,0 +1,9 @@
+{
+	"Name": "Pomme",
+	"Species": "fruit",
+	"Number": 3,
+	"Eater": [
+		"John ",
+		"Jane "
+	]
+}
